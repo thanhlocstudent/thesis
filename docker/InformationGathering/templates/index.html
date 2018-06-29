@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Project - Web Information Gathering</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+    <style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 6px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button2 {
+  background-color: #008CBA;
+    color: white;
+    }
+
+.button2:hover {
+    
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+
+}
+#loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+    }
+
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+</style>
+
+  </head>
+  <body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Web Information Gathering</a>
+        </div>
+        <div class="navbar-collapse collapse" >
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </div>
+      </div>
+</nav>
+
+<div class="container-fluid">
+      
+      <div class="row row-offcanvas row-offcanvas-left">
+        <form action="/" method="POST" class="navbar-form">
+         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">          
+            <ul class="nav nav-sidebar">
+              <li class="active"><a href="#">Scanning</a></li>
+              <li><a>Full Features <input type="checkbox" id="myCheckFF" name="myCheckFF" style="float:right" onclick="myFunction()"></a></li>
+              <li><a>Find Subdomains <input type="checkbox" id="domain" name="domain" style="float:right"></a></li>
+              <li><a>Crawl Website <input type="checkbox" id="crawl" name="crawl" style="float:right"></a></li>
+              <li><a>Web Server Identify <input type="checkbox" id="platform" name="platform" style="float:right"></a></li>
+              <li><a>CMS Identify <input type="checkbox" id="cms" name="cms" style="float:right"></a></li>
+              <li><a>Interesting Finding <input type="checkbox" id="finding" name="finding" style="float:right"></a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-md-10 main">
+          <p class="visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+          </p>
+      <script>function ShowDiv() {document.getElementById("loader").style.display = "";}</script>    
+      <h1 class="sub-header">
+            <p>URL Domain</p>
+            <input type="text" name="scanDomain"  class="form-control" style="width:30%;border: 2px solid gray" placeholder="ex: www.example.com">
+            <input type="submit" value="Scan" class="navbar-form button button2" onclick="ShowDiv()">
+        </form><div id="loader" style="display:none;"></div>
+      </h1>
+          <hr>
+
+          <h2 class="sub-header">Function Deloying</h2>
+      
+      <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder text-center">
+              <img src="{{ url_for('static', filename='su.jpg') }}" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">
+              <h4>Find subdomains</h4>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder text-center">
+              <img src="{{ url_for('static', filename='crawl.png') }}" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">
+              <h4>Crawl Website</h4>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder text-center">
+              <img src="{{ url_for('static', filename='platform.png') }}" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">
+              <h4>Web Server Identify</h4>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder text-center">
+              <img src="{{ url_for('static', filename='cms.png') }}" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">
+              <h4>CMS Identify</h4>
+            </div>
+          </div>
+          <br>
+           <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder text-center">
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder text-center">
+              <img src="{{ url_for('static', filename='takeover.png') }}" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">
+              <h4>Subdomain-takeover</h4>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder text-center">
+              <img src="{{ url_for('static', filename='info.png') }}" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">
+              <h4>Interesting Finding</h4>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder text-center">
+            </div>
+          </div>    
+      </div>    
+      </div>
+
+
+  </div>
+
+</div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/myScript.js') }}"></script>
+  </body>
+</html>
